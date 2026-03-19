@@ -15,6 +15,7 @@ The main artifact is the notebook [building_lightweight_rag_for_academic_papers.
 - `building_lightweight_rag_for_academic_papers.ipynb`: main implementation notebook
 - `requirements.txt`: core dependencies
 - `requirements-optional.txt`: optional dependency for FAISS
+- `.env.example`: example configuration for Qwen API access
 - `DSAI5201_Project_Instructions.pdf`: course project instructions
 
 ## Setup
@@ -31,6 +32,17 @@ Install FAISS if needed:
 pip install -r requirements-optional.txt
 ```
 
+Configure the Qwen API if you want to use hosted generation:
+
+```bash
+cp .env.example .env
+```
+
+Then fill in:
+- `DASHSCOPE_API_KEY`
+- `DASHSCOPE_BASE_URL`
+- `QWEN_MODEL`
+
 ## How to Run
 
 1. Open the notebook in Jupyter.
@@ -40,6 +52,7 @@ pip install -r requirements-optional.txt
 The notebook is designed with fallbacks:
 - If `faiss` and `sentence-transformers` are available, it uses a stronger semantic retrieval setup.
 - If not, it falls back to a lightweight TF-IDF-based retrieval pipeline so the workflow can still run.
+- If the Qwen API is configured, the notebook can use hosted answer generation through DashScope's OpenAI-compatible endpoint.
 
 ## Output
 
